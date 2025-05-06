@@ -154,9 +154,9 @@ header {
 }
 
 .logo-click-hf {
-  width: 110px; /* Đặt chiều rộng mong muốn */
-  height: 110px; /* Đặt chiều cao bằng với chiều rộng để tạo hình tròn */
-  border-radius: 50%; /* Bo tròn các góc */
-  object-fit: cover; /* Đảm bảo ảnh không bị méo */
+  width: 110px;
+  height: 110px; 
+  border-radius: 50%; 
+  object-fit: cover; 
   padding: 20px;
 }
