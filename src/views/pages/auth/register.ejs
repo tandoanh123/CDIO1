@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00696d" />
+    <meta name="author" content="SE104.O11_Nhom6" />
+    <meta
+      name="description"
+      content="Hãy đăng ký để trở thành một phần của GoTutor và hãy để TECHTWO trở thành một phần của bạn."
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/imgs/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/pages/auth/register.css" />
+
+    <title>GoTutor</title>
+  </head>
+
+  <body>
+    <%- include('../../partials/header-small-title', { title: 'Đăng ký', help:
+    'Bạn cần sự trợ giúp?' }) %>
+
+    <main class="content-container">
+      <section class="intro">
+        <img src="" alt="GoTutor" class="intro__logo" />
+        <div class="intro__content">
+          <p class="intro__slogan">
+            Muốn nâng cao kiến thức và cải thiện <br />Đến ngay GoTutor
+          </p>
+          <p class="intro__sub-title">
+            Chúng tôi cung cấp dịch vụ kết nối học viên với đội ngũ gia sư giàu
+            kinh nghiệm, phù hợp với mọi trình độ và mục tiêu học tập
+          </p>
+        </div>
+      </section>
+
+      <section class="register">
+        <h1 class="register__title">Đăng ký</h1>
+        <p class="register__note">
+          Thông tin có dấu <span class="red">*</span> là những thông tin bắt
+          buộc.
+        </p>
+        <!-- thêm action -->
+        <form class="register__form form" id="register-form">
+          <div class="row double">
+            <div class="col">
+              <label for="form__first-name" class="form-label"
+                >Họ <span class="red">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control form__first-name"
+                id="form__first-name"
+                placeholder="Nhập họ"
+              />
+              <div class="error"></div>
+            </div>
+            <div class="col">
+              <label for="form__last-name" class="form-label"
+                >Tên <span class="red">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control form__last-name"
+                id="form__last-name"
+                aria-describedby="emailHelp"
+                placeholder="Nhập tên"
+              />
+              <div class="error"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input_form">
+              <label for="form__email" class="form-label"
+                >Email <span class="red">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control form__email"
+                id="form__email"
+                placeholder="Nhập email"
+              />
+              <div class="error"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="form__password" class="form-label"
+              >Mật khẩu <span class="red">*</span></label
+            >
+            <p class="form-text register__note">
+              Đặt mật khẩu có ít nhất là 8 ký tự, trong đó có cả chữ và số,
+              không bao gồm dấu cách và ký tự đặc biệt.
+            </p>
+            <div class="input_form">
+              <input
+                type="password"
+                class="form-control form__password"
+                id="form__password"
+                placeholder="Nhập mật khẩu"
+              />
+              <span class="material-symbols-outlined" id="eye-open-psw"
+                >visibility</span
+              >
+              <div class="error"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="form__password-confirm" class="form-label"
+              >Nhập lại mật khẩu <span class="red">*</span></label
+            >
+
+            <div class="input_form">
+              <input
+                type="password"
+                class="form-control form__password-confirm"
+                id="form__password-confirm"
+                placeholder="Nhập lại mật khẩu"
+              />
+              <span class="material-symbols-outlined" id="eye-open-cpsw"
+                >visibility</span
+              >
+              <div class="error"></div>
+            </div>
+          </div>
+          <button id="register-button" type="submit" class="btn form__submit">
+            Đăng ký
+          </button>
+        </form>
+
+        <a href="/auth/login" class="btn register__login" role="button"
+          >Bạn đã có tài khoản? <span class="highlight">Đăng nhập</span></a
+        >
+        <p class="register__confirm">
+          Bằng việc đăng ký, bạn đã đồng ý với GoTutor về<br />
+          <a href="/terms-of-use">điều khoản dịch vụ</a> và
+          <a href="/privacy-policy">chính sách bảo mật</a>.
+        </p>
+      </section>
+    </main>
+
+    <%- include('../../partials/footer.ejs') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/partials/header-small-title.js"></script>
+    <script src="/scripts/auth/register.js"></script>
+  </body>
+</html>

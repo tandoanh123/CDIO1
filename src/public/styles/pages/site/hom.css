@@ -1,0 +1,322 @@
+@import url("/styles/base.css");
+@import url("/styles/partials/header-full.css");
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.house .house-slider .slider {
+  display: flex;
+  align-items: center;
+  /* Căn giữa các phần tử theo chiều dọc */
+  flex-wrap: wrap;
+  /* Cho phép các phần tử con cuộn xuống dòng nếu không đủ chỗ */
+  gap: 2rem;
+  /* Khoảng cách giữa các phần tử con là 2rem */
+  /* Thêm khoảng cách từ trên xuống cho slider (bạn có thể điều chỉnh giá trị này) */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 5px solid var(--primary-color-1);
+  /* Thêm đường viền màu xanh lá cây */
+  padding: 10px;
+  /* Thêm padding để viền không quá sát nội dung */
+  border-radius: 10px;
+  /* Thêm bo góc (tùy chọn) */
+  justify-content: center;
+  /* Căn giữa các phần tử con (content và image) */
+}
+
+.house .house-slider .slider .content {
+  flex: 1 1 40rem;
+  /* Điều chỉnh kích thước base cho content */
+  text-align: center;
+  /* Căn giữa nội dung bên trong content */
+}
+
+.house .house-slider .slider .image {
+  flex: 1 1 40rem;
+  /* Điều chỉnh kích thước base cho image */
+  display: flex;
+  justify-content: center;
+  /* Căn giữa hình ảnh bên trong container image */
+}
+
+.slider img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 20px 10px 30px 15px;
+}
+
+.house .house-slider .slider .content span {
+  color: var(--yellow);
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.house .house-slider .slider .content h1 {
+  color: var(--black);
+  font-size: 40px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+  /* Đảm bảo căn giữa */
+  text-decoration: underline;
+}
+
+.house .house-slider .slider .content .logo {
+  color: var(--black);
+  font-size: 30px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+  /* Đảm bảo căn giữa */
+  margin-top: 40px;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: underline;
+}
+
+.house .house-slider .slider .content p {
+  color: var(--black);
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 1.4;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  text-align: center;
+  /* Đảm bảo căn giữa */
+}
+
+.house .house-slider .slider .content h2 {
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  text-align: left;
+  /* Bạn muốn logo bên trái, không phải giữa? */
+}
+
+.container-WhereStart {
+  display: flex;
+  flex-direction: row;
+  padding: 40px;
+  margin-top: 100px;
+}
+
+.text-WhereStart {
+  flex: 1;
+  padding: 40px;
+
+  color: var(--primary-color-1);
+}
+
+.text-WhereStart h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.text-WhereStart p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.image-WhereStart {
+  flex: 1;
+  padding: 0;
+  /* Loại bỏ padding để hình sát cạnh */
+}
+
+.image-WhereStart img {
+  width: 100%;
+  height: 400px;
+  display: block;
+}
+
+.container-howIt {
+  padding: 60px;
+  margin-top: 100px;
+}
+
+.container-howIt h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  font-weight: bold;
+  /* Chữ đậm */
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1;
+  white-space: nowrap;
+  display: block;
+  /* Chuyển thành block để text-align hoạt động đúng */
+  width: 100%;
+  text-align: center;
+  /* Căn giữa văn bản */
+  color: var(--primary-color-1);
+}
+
+.container-howIt .subtitle {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  text-align: center;
+  /* Căn giữa subtitle nếu bạn muốn */
+  color: var(--primary-color-1);
+  font-weight: bold;
+}
+
+.container-howIt .steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.container-howIt .step {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  /* Căn giữa nội dung bên trong step (h2 và p) */
+}
+
+.container-howIt .step h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: var(--primary-color-1);
+  font-weight: bold;
+  /* Chữ đậm (đã là mặc định, nhưng vẫn nên đặt rõ) */
+}
+
+.container-howIt .step p {
+  font-size: 1em;
+  color: var(--primary-color-1);
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.TopTutor {
+  padding: 50px;
+  /* (Tùy chọn) Thêm khoảng cách bên trong để nội dung không sát khung */
+  box-sizing: border-box;
+  /* Đảm bảo padding không làm tăng kích thước tổng thể */
+}
+
+.top-tutor h4 {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.TopTutor {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toptutor-slider {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tutor-slide {
+  background: white;
+  border-radius: 20px;
+  position: relative;
+}
+
+.tutor-slide::before {
+  content: "";
+  position: absolute;
+  height: 40%;
+  width: 100%;
+  background: var(--primary-color-1);
+  border-radius: 20px 20px 0 0;
+}
+
+.tutor-slide .image-TopTutor {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  padding: 3px;
+  background: black;
+  margin: 0 auto;
+}
+
+.tutor-slide .image-TopTutor img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+  z-index: 100;
+}
+
+.tutor-slide .card-content-TopTutor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  position: relative;
+  border: 2px solid var(--primary-color-1);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.card-content-TopTutor .NameTutor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  color: black;
+}
+
+.card-content-TopTutor .NameTutor .name {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.card-content-TopTutor .NameTutor .language {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card-content-TopTutor .NameTutor .icons {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.tutor-slide .button-TopTutor {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.tutor-slide .button-TopTutor a {
+  background: var(--primary-color-1);
+  outline: none;
+  border: none;
+  color: white;
+  padding: 8px 22px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.button-TopTutor a:hover {
+  background: black;
+  color: white;
+}

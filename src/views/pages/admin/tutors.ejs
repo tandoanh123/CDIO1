@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00696d" />
+    <meta name="author" content="SE104.O11_Nhom6" />
+    <meta
+      name="description"
+      content="Quản lý danh sách gia sư trên HireTutor.com"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2Lw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="shortcut icon" href="/imgs/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/pages/admin/tutors.css" />
+
+    <title>HireTutor.com - Quản lý gia sư</title>
+  </head>
+  <body>
+    <%- include('../../partials/admin-nav') %>
+
+    <main class="main-container">
+      <div class="header-section">
+        <h2 class="dashboard-title">Danh sách gia sư</h2>
+        <button
+          class="btn btn-primary add-tutor-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#addTutorModal"
+        >
+          <i class="fas fa-plus me-2"></i>Thêm gia sư mới
+        </button>
+      </div>
+
+      <!-- Bảng danh sách gia sư -->
+      <section class="tutor-list">
+        <div class="table-responsive">
+          <table class="table table-hover tutor-table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tên gia sư</th>
+                <th scope="col">Môn học</th>
+                <th scope="col">Khu vực</th>
+                <th scope="col">Hành động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% tutors.forEach(tutor => { %>
+              <tr>
+                <td><%= tutor.tutor_id %></td>
+                <td><%= tutor.tutor_name %></td>
+                <td>Chưa có thông tin</td>
+                <td><%= tutor.city_name %>, <%= tutor.prov_name %></td>
+                <td>
+                  <button
+                    class="btn btn-warning btn-sm edit-tutor-btn me-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editTutorModal"
+                    data-tutor-id="<%= tutor.tutor_id %>"
+                    data-tutor-name="<%= tutor.tutor_name %>"
+                  >
+                    <i class="fas fa-edit"></i> Sửa
+                  </button>
+                  <button
+                    class="btn btn-danger btn-sm delete-tutor-btn"
+                    data-tutor-id="<%= tutor.tutor_id %>"
+                  >
+                    <i class="fas fa-trash-alt"></i> Xóa
+                  </button>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Modal Thêm gia sư -->
+      <div
+        class="modal fade"
+        id="addTutorModal"
+        tabindex="-1"
+        aria-labelledby="addTutorModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addTutorModalLabel">
+                Thêm gia sư mới
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="addTutorForm">
+                <div class="mb-3">
+                  <label for="tutor_name" class="form-label">Tên gia sư</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tutor_name"
+                    name="tutor_name"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="gender" class="form-label">Giới tính</label>
+                  <select
+                    class="form-select"
+                    id="gender"
+                    name="gender"
+                    required
+                  >
+                    <option value="M">Nam</option>
+                    <option value="F">Nữ</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="experience_years" class="form-label"
+                    >Số năm kinh nghiệm</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="experience_years"
+                    name="experience_years"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tutor_avg_rating" class="form-label"
+                    >Điểm đánh giá trung bình</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="tutor_avg_rating"
+                    name="tutor_avg_rating"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="tutor_img_url" class="form-label"
+                    >URL ảnh gia sư</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="tutor_img_url"
+                    name="tutor_img_url"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="hourly_rate" class="form-label"
+                    >Giá thuê theo giờ</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="hourly_rate"
+                    name="hourly_rate"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="prov_id" class="form-label">Tỉnh</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="prov_id"
+                    name="prov_id"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="city_id" class="form-label">Thành phố</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="city_id"
+                    name="city_id"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Thêm gia sư
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Sửa gia sư -->
+      <div
+        class="modal fade"
+        id="editTutorModal"
+        tabindex="-1"
+        aria-labelledby="editTutorModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editTutorModalLabel">
+                Sửa thông tin gia sư
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="editTutorForm">
+                <input type="hidden" id="edit_tutor_id" name="tutor_id" />
+                <div class="mb-3">
+                  <label for="edit_tutor_name" class="form-label"
+                    >Tên gia sư</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="edit_tutor_name"
+                    name="tutor_name"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="edit_gender" class="form-label">Giới tính</label>
+                  <select
+                    class="form-select"
+                    id="edit_gender"
+                    name="gender"
+                    required
+                  >
+                    <option value="M">Nam</option>
+                    <option value="F">Nữ</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="edit_experience_years" class="form-label"
+                    >Số năm kinh nghiệm</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="edit_experience_years"
+                    name="experience_years"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="edit_tutor_avg_rating" class="form-label"
+                    >Điểm đánh giá trung bình</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="edit_tutor_avg_rating"
+                    name="tutor_avg_rating"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="edit_tutor_img_url" class="form-label"
+                    >URL ảnh gia sư</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="edit_tutor_img_url"
+                    name="tutor_img_url"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="edit_hourly_rate" class="form-label"
+                    >Giá thuê theo giờ</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="edit_hourly_rate"
+                    name="hourly_rate"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="edit_prov_id" class="form-label">Tỉnh</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="edit_prov_id"
+                    name="prov_id"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="edit_city_id" class="form-label">Thành phố</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="edit_city_id"
+                    name="city_id"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Cập nhật</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../../components/on-top-btn') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Xử lý thêm gia sư
+      document
+        .getElementById("addTutorForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const response = await fetch("/admin/add-tutor", {
+            method: "POST",
+            body: formData,
+          });
+          const result = await response.json();
+          alert(result.message);
+          if (response.ok) {
+            location.reload();
+          }
+        });
+
+      // Xử lý sửa gia sư
+      document.querySelectorAll(".edit-tutor-btn").forEach((button) => {
+        button.addEventListener("click", (e) => {
+          const tutorId = e.currentTarget.getAttribute("data-tutor-id");
+          const tutorName = e.currentTarget.getAttribute("data-tutor_name");
+          document.getElementById("edit_tutor_id").value = tutorId;
+          document.getElementById("edit_tutor_name").value = tutorName;
+        });
+      });
+
+      document
+        .getElementById("editTutorForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const response = await fetch("/admin/update-tutor", {
+            method: "POST",
+            body: formData,
+          });
+          const result = await response.json();
+          alert(result.message);
+          if (response.ok) {
+            location.reload();
+          }
+        });
+
+      // Xử lý xóa gia sư
+      document.querySelectorAll(".delete-tutor-btn").forEach((button) => {
+        button.addEventListener("click", async (e) => {
+          const tutorId = e.currentTarget.getAttribute("data-tutor-id");
+          if (confirm("Bạn có chắc chắn muốn xóa gia sư này?")) {
+            const response = await fetch("/admin/delete-tutor", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ tutor_id: tutorId }),
+            });
+            const result = await response.json();
+            alert(result.message);
+            if (response.ok) {
+              location.reload();
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

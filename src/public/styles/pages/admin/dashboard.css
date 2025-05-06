@@ -1,0 +1,130 @@
+@import url("/styles/base.css");
+@import url("/styles/partials/admin-nav.css");
+
+body {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+main {
+  width: 85%;
+  margin-left: 15%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Container chính */
+.main-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 3vh auto;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Tiêu đề Dashboard */
+.dashboard-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1a3c34;
+  text-align: center;
+  letter-spacing: 1px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.dashboard-title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #006d77, #83c5be);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Phần Tổng quan */
+.overview {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.tutor-card {
+  width: 280px;
+  padding: 25px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #006d77, #83c5be);
+  color: #ffffff;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tutor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 109, 119, 0.3);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần Chào mừng */
+.welcome-section {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-section h3 {
+  font-size: 1.8rem;
+  color: #1a3c34;
+  margin-bottom: 10px;
+}
+
+.welcome-section p {
+  font-size: 1.1rem;
+  color: #555;
+}

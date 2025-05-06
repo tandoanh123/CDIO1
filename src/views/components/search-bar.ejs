@@ -1,0 +1,125 @@
+<form class="main--search" action="/search/results" method="get">
+  <div class="search__wrapper">
+    <div class="search-address">
+      <span class="material-symbols-outlined icon--filled">location_on</span>
+      <input
+        name="location"
+        class="input_address"
+        type="text"
+        placeholder="Tỉnh/Thành phố"
+        list="location"
+        required
+      />
+      <datalist id="location"></datalist>
+    </div>
+
+    <div class="search-address" style="border-left: 1px solid #90a6b1">
+      <span class="material-symbols-outlined icon--filled">calendar_month</span>
+      <input type="hidden" name="start_time" value="" />
+      <input type="hidden" name="end_time" value="" />
+      <input
+        class="input_address"
+        id="dateRange"
+        type="text"
+        value=""
+        placeholder="Thời gian học"
+        required
+      />
+    </div>
+
+    <div class="search-address" style="border-left: 1px solid #90a6b1">
+      <span class="material-symbols-outlined icon--filled">person</span>
+      <select name="gender" class="input_address" required>
+        <option value="" disabled selected>Chọn giới tính</option>
+        <option value="M">Nam</option>
+        <option value="F">Nữ</option>
+        <option value="Other">Khác</option>
+      </select>
+    </div>
+  </div>
+  <button class="button--submit" type="submit">Tìm kiếm</button>
+</form>
+
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+></script>
+<script>
+  $(function () {
+    // Khởi tạo DateRangePicker
+    $("#dateRange").daterangepicker(
+      {
+        timePicker: true,
+        timePicker24Hour: true,
+        timePickerIncrement: 30,
+        locale: {
+          format: "DD/MM/YYYY HH:mm",
+          applyLabel: "Áp dụng",
+          cancelLabel: "Hủy",
+          daysOfWeek: ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+          monthNames: [
+            "Tháng 1",
+            "Tháng 2",
+            "Tháng 3",
+            "Tháng 4",
+            "Tháng 5",
+            "Tháng 6",
+            "Tháng 7",
+            "Tháng 8",
+            "Tháng 9",
+            "Tháng 10",
+            "Tháng 11",
+            "Tháng 12",
+          ],
+        },
+        minDate: moment().startOf("day"),
+      },
+      function (start, end) {
+        $('input[name="start_time"]').val(start.format("YYYY-MM-DD HH:mm:ss"));
+        $('input[name="end_time"]').val(end.format("YYYY-MM-DD HH:mm:ss"));
+        $("#dateRange").val(
+          start.format("DD/MM/YYYY HH:mm") +
+            " - " +
+            end.format("DD/MM/YYYY HH:mm")
+        );
+      }
+    );
+
+    // Gợi ý tìm kiếm địa điểm
+    $('input[name="location"]').on("input", async function () {
+      const searchKey = $(this).val().trim().toLowerCase();
+      if (searchKey.length > 0) {
+        const response = await fetch("/hint_search", {
+          method: "POST",
+          body: JSON.stringify({ searchKey }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const back = await response.json();
+        const datalist = $("#location");
+        datalist.empty();
+        back.result.forEach((addressOption) => {
+          if (addressOption.city_name) {
+            datalist.append(
+              `<option value="${addressOption.city_name}"></option>`
+            );
+          }
+          if (addressOption.prov_name) {
+            datalist.append(
+              `<option value="${addressOption.prov_name}"></option>`
+            );
+          }
+        });
+      }
+    });
+  });
+</script>

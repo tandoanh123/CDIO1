@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00696d" />
+    <meta name="author" content="SE104.O11_Nhom6" />
+    <meta
+      name="description"
+      content="Quản lý lịch trình gia sư trên HireTutor.com"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/imgs/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/pages/admin/tutor-schedule.css" />
+
+    <title>HireTutor.com</title>
+  </head>
+  <body>
+    <%- include('../../partials/admin-nav') %>
+
+    <main class="main-container">
+      <h2>Lịch trình gia sư</h2>
+
+      <!-- Form thêm khung giờ -->
+      <section class="add-schedule">
+        <h3>Thêm khung giờ mới</h3>
+        <form id="add-schedule-form" class="mb-4">
+          <div class="row mb-3">
+            <div class="col">
+              <label for="tutor_id" class="form-label">Gia sư</label>
+              <select
+                class="form-control"
+                id="tutor_id"
+                name="tutor_id"
+                required
+              >
+                <% tutors.forEach(function(tutor) { %>
+                <option value="<%= tutor.tutor_id %>">
+                  <%= tutor.tutor_name %>
+                </option>
+                <% }) %>
+              </select>
+            </div>
+            <div class="col">
+              <label for="start_time" class="form-label"
+                >Thời gian bắt đầu</label
+              >
+              <input
+                type="datetime-local"
+                class="form-control"
+                id="start_time"
+                name="start_time"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="end_time" class="form-label"
+                >Thời gian kết thúc</label
+              >
+              <input
+                type="datetime-local"
+                class="form-control"
+                id="end_time"
+                name="end_time"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="status" class="form-label">Trạng thái</label>
+              <select class="form-control" id="status" name="status">
+                <option value="available">Trống</option>
+                <option value="booked">Đã đặt</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Thêm khung giờ</button>
+        </form>
+      </section>
+
+      <!-- Danh sách lịch trình -->
+      <section class="schedule-list">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Gia sư</th>
+              <th>Thời gian bắt đầu</th>
+              <th>Thời gian kết thúc</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% schedules.forEach(function(schedule) { %>
+            <tr>
+              <td><%= schedule.schedule_id %></td>
+              <td><%= schedule.tutor_name %></td>
+              <td><%= schedule.start_time_format %></td>
+              <td><%= schedule.end_time_format %></td>
+              <td>
+                <%= schedule.status === 'available' ? 'Trống' : 'Đã đặt' %>
+              </td>
+              <td>
+                <button
+                  class="btn btn-warning btn-sm edit-schedule"
+                  data-id="<%= schedule.schedule_id %>"
+                >
+                  Sửa
+                </button>
+                <button
+                  class="btn btn-danger btn-sm delete-schedule"
+                  data-id="<%= schedule.schedule_id %>"
+                >
+                  Xóa
+                </button>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <%- include('../../components/on-top-btn') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Xử lý thêm khung giờ
+      document
+        .getElementById("add-schedule-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = {
+            tutor_id: document.getElementById("tutor_id").value,
+            start_time: document.getElementById("start_time").value,
+            end_time: document.getElementById("end_time").value,
+            status: document.getElementById("status").value,
+          };
+
+          fetch("/admin/add-schedule", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              alert(data.message);
+              if (data.message === "Thêm lịch trình thành công") {
+                location.reload();
+              }
+            })
+            .catch((err) => console.error("Error:", err));
+        });
+
+      // Xử lý sửa khung giờ
+      document.querySelectorAll(".edit-schedule").forEach((button) => {
+        button.addEventListener("click", function () {
+          const scheduleId = this.getAttribute("data-id");
+          const row = this.closest("tr");
+          const startTime = row.cells[2].innerText;
+          const endTime = row.cells[3].innerText;
+          const status =
+            row.cells[4].innerText === "Trống" ? "available" : "booked";
+
+          const newStartTime = prompt(
+            "Nhập thời gian bắt đầu mới (YYYY-MM-DDTHH:mm):",
+            startTime
+          );
+          const newEndTime = prompt(
+            "Nhập thời gian kết thúc mới (YYYY-MM-DDTHH:mm):",
+            endTime
+          );
+          const newStatus = prompt(
+            "Nhập trạng thái mới (available/booked):",
+            status
+          );
+
+          if (newStartTime && newEndTime && newStatus) {
+            fetch("/admin/update-schedule", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                schedule_id: scheduleId,
+                start_time: newStartTime,
+                end_time: newEndTime,
+                status: newStatus,
+              }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                alert(data.message);
+                if (data.message === "Cập nhật lịch trình thành công") {
+                  location.reload();
+                }
+              })
+              .catch((err) => console.error("Error:", err));
+          }
+        });
+      });
+
+      // Xử lý xóa khung giờ
+      document.querySelectorAll(".delete-schedule").forEach((button) => {
+        button.addEventListener("click", function () {
+          if (confirm("Bạn có chắc chắn muốn xóa khung giờ này?")) {
+            const scheduleId = this.getAttribute("data-id");
+            fetch("/admin/delete-schedule", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ schedule_id: scheduleId }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                alert(data.message);
+                if (data.message === "Xóa lịch trình thành công") {
+                  location.reload();
+                }
+              })
+              .catch((err) => console.error("Error:", err));
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

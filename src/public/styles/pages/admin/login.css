@@ -1,0 +1,149 @@
+@import url("/styles/base.css");
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container chính */
+.login-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 80vh;
+  margin: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần quảng bá */
+.promo-section {
+  flex: 1;
+  background: linear-gradient(145deg, #006d77, #83c5be);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.promo-content {
+  text-align: center;
+}
+
+.promo-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.promo-subtitle {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.promo-text {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* Form đăng nhập */
+.login-form-section {
+  flex: 1;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a3c34;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.login-title::after {
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #006d77, #83c5be);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.alert {
+  font-size: 0.9rem;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #1a3c34;
+}
+
+.input-group-text {
+  background: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-right: none;
+  color: #006d77;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 0 8px 8px 0;
+  padding: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #006d77;
+  box-shadow: 0 0 8px rgba(0, 109, 119, 0.2);
+  outline: none;
+}
+
+.toggle-password {
+  cursor: pointer;
+  background: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-left: none;
+  color: #006d77;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background: linear-gradient(90deg, #006d77, #83c5be);
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 109, 119, 0.3);
+}

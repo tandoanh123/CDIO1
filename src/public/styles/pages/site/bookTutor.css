@@ -1,0 +1,108 @@
+@import url("/styles/base.css");
+@import url("/styles/partials/header-full.css");
+
+.BookTutor {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 5px solid #000;
+  background: white;
+}
+
+.container-BookTutor {
+  padding: 20px;
+  color: var(--primary-color-1);
+  font-weight: bold;
+}
+
+.container-BookTutor h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.content-BookTutor {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.form-BookTutor {
+  flex: 1;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color-1);
+  border: 1px solid #555555;
+  color: #ffffff;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaaaaa;
+}
+
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
+    no-repeat right 10px center;
+  background-color: var(--primary-color-1);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.teacher-info {
+  flex: 1;
+  text-align: center;
+}
+
+.teacher-info h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: var(--primary-color-1);
+  font-weight: bold;
+}
+
+.teacher-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.confirm-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color-1); /* Màu xanh của nút */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.confirm-btn:hover {
+  background-color: black; /* Hiệu ứng hover */
+}

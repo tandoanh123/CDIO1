@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00696d" />
+    <meta
+      name="description"
+      content="GoTutor - Nền tảng kết nối gia sư chất lượng, giúp học sinh đạt thành công trong học tập với các dịch vụ gia sư cá nhân hóa."
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/imgs/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/pages/site/bookTutor.css" />
+  </head>
+  <body>
+    <%- include('../../partials/header-full', { user }) %> <%-
+    include('../../partials/nav-tree', { nav_tree__data: [ { text: 'Trang chủ',
+    link: "/" }, { text: 'book me', link: "book-tutor" } ] }) %>
+
+    <main>
+      <div class="BookTutor">
+        <div class="container-BookTutor">
+          <h2>Book me</h2>
+          <div class="content-BookTutor">
+            <!-- Phần form đặt lịch -->
+            <div class="form-BookTutor">
+              <!-- Trường Date -->
+              <div class="form-group">
+                <label for="date">Date</label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  placeholder="Pick a date"
+                  required
+                />
+              </div>
+
+              <!-- Trường Time -->
+              <div class="form-group">
+                <label for="time">Time</label>
+                <select id="time" name="time" required>
+                  <option value="" disabled selected>Select the time</option>
+                  <option value="09:00">09:00 AM</option>
+                  <option value="10:00">11:00 AM</option>
+                  <option value="14:00">14:00 PM</option>
+                  <option value="15:00">15:00 PM</option>
+                  <option value="15:00">16:00 PM</option>
+                </select>
+              </div>
+
+              <!-- Trường Phone Number -->
+              <div class="form-group">
+                <label for="phone">Phone number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Numbers"
+                  required
+                />
+              </div>
+
+              <!-- Trường Notes -->
+              <div class="form-group">
+                <label for="notes">Notes for the tutor (optional)</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  placeholder="Note"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Phần hiển thị thông tin gia sư -->
+            <div class="teacher-info">
+              <h3>Doanh Phan</h3>
+              <img
+                src="/imgs/tutor1.jpg"
+                alt="Teacher Image"
+                class="teacher-image"
+              />
+            </div>
+          </div>
+
+          <!-- Nút Confirm -->
+          <button type="submit" class="confirm-btn">Confirm</button>
+        </div>
+      </div>
+    </main>
+
+    <div class="mt-48"></div>
+
+    <%- include('../../partials/footer') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/base.js"></script>
+  </body>
+</html>

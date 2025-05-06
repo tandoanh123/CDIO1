@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00696d" />
+    <meta
+      name="description"
+      content="Đổi mật khẩu thường xuyên giúp tăng cường độ bảo mật của bạn"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/imgs/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/pages/auth/reset.css" />
+
+    <title>GoTutor</title>
+  </head>
+
+  <body>
+    <%- include('../../partials/header-small-title', {
+      title: "Đặt lại mật khẩu",
+      help: "Bạn cần sự trợ giúp?"
+  })%>
+
+    <main class="content-container">
+      <section class="resetPassword">
+        <h1 class="resetPassword__title">Đặt lại mật khẩu</h1>
+        <form
+          class="resetPassword__form form"
+          id="resetPasswordPost"
+          action="post"
+        >
+          <div class="row">
+            <label for="form__password" class="form-label">Mật khẩu mới</label>
+            <p class="form-text resetPassword__note">
+              Đặt mật khẩu có ít nhất là 8 ký tự, trong đó có cả chữ và số.
+            </p>
+            <div class="input_form">
+              <input
+                type="password"
+                class="form-control form__password"
+                id="form__password"
+                placeholder="Nhập mật khẩu mới"
+              />
+              <span class="material-symbols-outlined" id="eye-open-psw"
+                >visibility</span
+              >
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="form__password-confirm" class="form-label"
+              >Xác nhận mật khẩu mới</label
+            >
+            <div class="input_form">
+              <input
+                type="password"
+                class="form-control form__password-confirm"
+                id="form__password-confirm"
+                placeholder="Nhập lại mật khẩu mới"
+              />
+              <span class="material-symbols-outlined" id="eye-open-cpsw"
+                >visibility</span
+              >
+            </div>
+          </div>
+          <div class="error-message" id="error-message"></div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button id="confirm-button" type="submit" class="btn form__submit">
+              Xác nhận
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <%- include('../../partials/footer') %>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/partials/header-small-title.js"></script>
+    <script src="/scripts/auth/reset.js"></script>
+  </body>
+</html>

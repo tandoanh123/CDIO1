@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00696d" />
+    <meta name="author" content="SE104.O11_Nhom6" />
+    <meta
+      name="description"
+      content="Hãy đăng nhập để trở thành thành viên của gia đình GoTutor."
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/imgs/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/pages/auth/login.css" />
+
+    <title>GoTutor</title>
+  </head>
+
+  <body>
+    <%- include('../../partials/header-small-title', { title: 'Đăng nhập', help:
+    'Bạn quên mật khẩu?' }) %>
+
+    <main class="content-container">
+      <section class="intro">
+        <img src="" alt="GoTutor" class="intro__logo" />
+        <div class="intro__content">
+          <p class="intro__slogan">
+            Muốn nâng cao kiến thức <br />Đến ngay GoTutor
+          </p>
+          <p class="intro__sub-title">
+            Tìm gia sư với giá ưu đãi nhất từ GoTutor...
+          </p>
+        </div>
+      </section>
+      <section class="login">
+        <h1 class="login__title">Đăng nhập</h1>
+        <form
+          class="login__form form"
+          id="login-form"
+          action="/login"
+          method="post"
+        >
+          <div class="row">
+            <div class="input_form">
+              <label for="form__email" class="form-label">Email</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control form__email"
+                id="form__email"
+                placeholder="Nhập email"
+              />
+            </div>
+            <div class="error"></div>
+          </div>
+          <div class="row">
+            <label for="form__password" class="form-label">Mật khẩu</label>
+            <div class="input_form">
+              <input
+                type="password"
+                name="password"
+                class="form-control form__password"
+                id="form__password"
+                placeholder="Nhập mật khẩu"
+              />
+              <span class="material-symbols-outlined" id="eye-open"
+                >visibility</span
+              >
+            </div>
+            <div class="error"></div>
+          </div>
+          <button id="login-button" type="submit" class="btn form__submit">
+            Đăng nhập
+          </button>
+        </form>
+
+        <a
+          href="/auth/register"
+          class="btn login__register"
+          role="button"
+          id="btn-register"
+          >Bạn chưa có tài khoản? <span class="highlight">Đăng ký</span></a
+        >
+      </section>
+    </main>
+
+    <%- include('../../partials/footer') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/partials/header-small-title.js"></script>
+    <script src="/scripts/auth/login.js"></script>
+  </body>
+</html>

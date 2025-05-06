@@ -1,0 +1,22 @@
+@import url("/styles/base.css");
+@import url("/styles/partials/header-small.css");
+
+.container--about {
+  width: 80%;
+  max-width: 1152px;
+  padding: 0;
+  margin: 12px auto;
+}
+
+.homepage__banner {
+  object-fit: cover;
+  width: 100%;
+}
+
+.section__title {
+  text-align: center;
+}
+
+.section__content {
+  text-align: justify;
+}

@@ -1,0 +1,7 @@
+@import url("./header.css");
+
+header {
+  background: url(/imgs/header__background.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}

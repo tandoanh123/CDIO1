@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00696d" />
+    <meta name="author" content="SE104.O11_Nhom6" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <link rel="shortcut icon" href="/imgs/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/pages/search/daterangepicker.css" />
+    <link rel="stylesheet" href="/styles/pages/search/results.css" />
+
+    <title>Tìm Gia Sư</title>
+  </head>
+
+  <body>
+    <%- include('../../partials/header-medium') %> <%-
+    include('../../partials/nav-tree', { nav_tree__data: [ { text: 'Trang chủ',
+    link: "/" }, { text: 'Tìm kiếm gia sư', link: "/search/results" } ] }) %>
+
+    <main class="content-container">
+      <aside class="filter-sidebar">
+        <div class="filter-sidebar__expanded-map">
+          <div class="filter-sidebar__map-icon">
+            <span class="material-symbols-outlined icon--filled"
+              >location_on</span
+            >
+          </div>
+          <div class="filter-sidebar__map-button">
+            <a href="#" target="blank" type="button" class="btn map-button"
+              >Hiển thị trên bản đồ</a
+            >
+          </div>
+        </div>
+
+        <div class="filter-sidebar__main">
+          <div class="filter-sidebar__heading">
+            <p class="filter-sidebar__heading-content">
+              <span class="material-symbols-outlined icon--filled"
+                >filter_alt</span
+              >Lọc theo:
+            </p>
+          </div>
+          <hr />
+          <div class="filter-sidebar__price">
+            <p class="filter-sidebar__content">Mức giá (mỗi giờ):</p>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="price"
+                class="form-check-input price"
+                value="Dưới VND 200.000"
+              />
+              <label class="form-check-label">Dưới VND 200.000</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="price"
+                class="form-check-input price"
+                value="VND 200.000 - VND 500.000"
+              />
+              <label class="form-check-label">VND 200.000 - VND 500.000</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="price"
+                class="form-check-input price"
+                value="VND 500.000 - VND 1.000.000"
+              />
+              <label class="form-check-label"
+                >VND 500.000 - VND 1.000.000</label
+              >
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="price"
+                class="form-check-input price"
+                value="Trên VND 1.000.000"
+              />
+              <label class="form-check-label">Trên VND 1.000.000</label>
+            </div>
+          </div>
+
+          <hr aria-hidden="true" />
+          <div class="filter-sidebar__experience">
+            <p class="filter-sidebar__content">Số năm kinh nghiệm:</p>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="experience"
+                class="form-check-input experience"
+                value="Dưới 1 năm"
+              />
+              <label class="form-check-label">Dưới 1 năm</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="experience"
+                class="form-check-input experience"
+                value="1-3 năm"
+              />
+              <label class="form-check-label">1-3 năm</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="experience"
+                class="form-check-input experience"
+                value="3-5 năm"
+              />
+              <label class="form-check-label">3-5 năm</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="experience"
+                class="form-check-input experience"
+                value="Trên 5 năm"
+              />
+              <label class="form-check-label">Trên 5 năm</label>
+            </div>
+          </div>
+
+          <hr aria-hidden="true" />
+          <div class="filter-sidebar__rating">
+            <p class="filter-sidebar__content">Đánh giá trung bình:</p>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="rating"
+                class="form-check-input rating"
+                value="4+"
+              />
+              <label class="form-check-label__score">4+</label>
+              <label class="form-check-label">Xuất sắc</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="rating"
+                class="form-check-input rating"
+                value="3+"
+              />
+              <label class="form-check-label__score">3+</label>
+              <label class="form-check-label">Tốt</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="rating"
+                class="form-check-input rating"
+                value="2+"
+              />
+              <label class="form-check-label__score">2+</label>
+              <label class="form-check-label">Trung bình</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="checkbox"
+                name="rating"
+                class="form-check-input rating"
+                value="Dưới 2"
+              />
+              <label class="form-check-label__score">Dưới 2</label>
+              <label class="form-check-label">Dưới trung bình</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="search-results">
+        <h2 class="search-results__content">
+          <div id="search__content">Kết quả tìm kiếm gia sư</div>
+        </h2>
+        <div class="search-results__filter">
+          <div class="search-results__filter__heading">
+            <span class="material-symbols-outlined">swap_vert</span>
+            <p class="search-results__filter__title">Sắp xếp theo:</p>
+          </div>
+
+          <div class="filter_price">
+            <div class="search-results__filter__item" id="filter__item-price">
+              <p class="search-results__filter__content">Giá</p>
+              <span class="material-symbols-outlined dropdown-button"
+                >keyboard_arrow_down</span
+              >
+              <div class="dropdown-content">
+                <input
+                  type="radio"
+                  id="price-ZA"
+                  class="sort price"
+                  name="sort"
+                  value="Giá cao đến thấp"
+                />
+                <label
+                  for="price-ZA"
+                  onclick="selectRadio('price-ZA')"
+                  class="sort-label"
+                  >Cao đến thấp</label
+                >
+                <input
+                  type="radio"
+                  id="price-AZ"
+                  class="sort price"
+                  name="sort"
+                  value="Giá thấp đến cao"
+                />
+                <label
+                  for="price-AZ"
+                  onclick="selectRadio('price-AZ')"
+                  class="sort-label"
+                  >Thấp đến cao</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="filter_experience">
+            <div
+              class="search-results__filter__item"
+              id="filter__item-experience"
+            >
+              <p class="search-results__filter__content">Kinh nghiệm</p>
+              <span class="material-symbols-outlined dropdown-button"
+                >keyboard_arrow_down</span
+              >
+              <div class="dropdown-content">
+                <input
+                  type="radio"
+                  id="experience-ZA"
+                  class="sort experience"
+                  name="sort"
+                  value="Kinh nghiệm cao đến thấp"
+                />
+                <label
+                  for="experience-ZA"
+                  onclick="selectRadio('experience-ZA')"
+                  class="sort-label"
+                  >Cao đến thấp</label
+                >
+                <input
+                  type="radio"
+                  id="experience-AZ"
+                  class="sort experience"
+                  name="sort"
+                  value="Kinh nghiệm thấp đến cao"
+                />
+                <label
+                  for="experience-AZ"
+                  onclick="selectRadio('experience-AZ')"
+                  class="sort-label"
+                  >Thấp đến cao</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-rating">
+            <div class="search-results__filter__item" id="filter__item-rating">
+              <p class="search-results__filter__content">Đánh giá</p>
+              <span class="material-symbols-outlined dropdown-button"
+                >expand_more</span
+              >
+              <div class="dropdown-content">
+                <input
+                  type="radio"
+                  id="rating-ZA"
+                  class="sort rating"
+                  name="sort"
+                  value="Đánh giá cao đến thấp"
+                />
+                <label
+                  for="rating-ZA"
+                  onclick="selectRadio('rating-ZA')"
+                  class="sort-label"
+                  >Cao đến thấp</label
+                >
+                <input
+                  type="radio"
+                  id="rating-AZ"
+                  class="sort rating"
+                  name="sort"
+                  value="Đánh giá thấp đến cao"
+                />
+                <label
+                  for="rating-AZ"
+                  onclick="selectRadio('rating-AZ')"
+                  class="sort-label"
+                  >Thấp đến cao</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr aria-hidden="true" />
+
+        <div id="filter-sort">
+          <!-- Danh sách gia sư sẽ được render bằng AJAX -->
+        </div>
+
+        <%- include('../../components/next-page') %>
+      </section>
+    </main>
+
+    <%- include('../../partials/footer') %> <%-
+    include('../../components/on-top-btn') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/search/results.js"></script>
+    <script src="/scripts/partials/search-bar.js"></script>
+    <script src="/scripts/partials/header-medium.js"></script>
+    <script src="/scripts/base.js"></script>
+  </body>
+</html>
