@@ -48,7 +48,8 @@ header {
 
 /* Header with no login*/
 .header-container__nav-top button,
-.header-container__top-authenticator button {
+.header-container__top-authenticator button,
+.header-container__nav-top a {
   width: 128px;
   height: 48px;
   background-color: var(--white);
@@ -63,12 +64,24 @@ header {
   }
 }
 
-.header-container__nav-top button {
+.header-container__nav-top button,
+.header-container__nav-top a {
   background-color: transparent;
   color: var(--white);
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  text-decoration: none;
 }
 
 .header-container__nav-top button:hover {
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+}
+
+.header-container__nav-top a:hover {
   background: linear-gradient(
     rgba(255, 255, 255, 0.5),
     rgba(255, 255, 255, 0.5)
@@ -138,4 +151,12 @@ header {
   line-height: 36px;
   word-wrap: break-word;
   color: var(--white);
+}
+
+.logo-click-hf {
+  width: 110px; /* Đặt chiều rộng mong muốn */
+  height: 110px; /* Đặt chiều cao bằng với chiều rộng để tạo hình tròn */
+  border-radius: 50%; /* Bo tròn các góc */
+  object-fit: cover; /* Đảm bảo ảnh không bị méo */
+  padding: 20px;
 }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#00696d" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/imgs/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/styles/pages/site/hom.css" />
+    <link rel="stylesheet" href="/styles/pages/site/instruct.css">
+
+    <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+        <title>GoTutor</title>
+      </head>
+
+  </head>
+  <body>
+    <!-- Header -->
+    <%- include('../../partials/header-full', { user }) %>
+
+    <!-- Main Section -->
+    <main>
+      <!-- Introduction -->
+      <section>
+        <h2 class="fade-in">Chào mừng bạn đến với GoTutor</h2>
+        <p class="fade-in">Chỉ với vài bước đơn giản, bạn có thể tìm được gia sư phù hợp để hỗ trợ việc học tập. Hãy cùng khám phá cách sử dụng nhé!</p>
+      </section>
+
+      <!-- Steps -->
+      <section class="step-container">
+        <!-- Step 1 -->
+        <div class="step-card fade-in">
+          <div>
+            <a href="/auth/register" class="step-number">01</a>
+            <h3>Đăng ký tài khoản</h3>
+            <p>Tạo tài khoản của bạn bằng cách nhập email và mật khẩu.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card fade-in">
+          <div>
+            <a class="step-number">02</a>
+            <h3>Tìm kiếm gia sư</h3>
+            <p>Sử dụng bộ lọc để tìm gia sư theo môn học, khu vực, và lịch trình phù hợp với bạn.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card fade-in">
+          <div>
+            <a class="step-number">03</a>
+            <h3>Đặt lịch học</h3>
+            <p>Chọn gia sư, đặt lịch học và thanh toán trực tuyến. Bắt đầu học ngay!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section>
+        <a href="/site/hom" class="button fade-in">Bắt đầu ngay hôm nay</a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <%- include('../../partials/footer') %>
+
+    <!-- JavaScript for Fade-In Animation -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/scripts/site/instruct.js"></script>
+  </body>
+</html>

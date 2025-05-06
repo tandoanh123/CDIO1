@@ -1,0 +1,95 @@
+body {
+    background-color: #f3f4f6;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  main {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 48px 16px;
+  }
+
+  section {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: #4b5563;
+    margin: 0;
+  }
+
+  .step-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  @media (min-width: 768px) {
+    .step-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .step-card {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .step-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  .step-number {
+    font-size: 60px;
+    color: #3b82f6;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    font-size: 20px;
+    color: #1f2937;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  a.button {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  a.button:hover {
+    background-color: #2563eb;
+  }
+
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }

@@ -9,6 +9,12 @@ class SiteController {
     });
   }
 
+  instruct(req,res){
+    res.status(200).render("./pages/site/instruct", {
+      user: req.session.user,
+    });
+  }
+
   // [GET] /about
   about(req, res) {
     res.render("./pages/site/about", {
@@ -28,6 +34,12 @@ class SiteController {
   // [GET] /term-of-use
   termOfUse(req, res) {
     res.render("./pages/site/terms-of-use", {
+      user: req.session.user,
+    });
+  }
+
+  termsOfTutor(req, res) {
+    res.render("./pages/site/terms-of-tutor", {
       user: req.session.user,
     });
   }
